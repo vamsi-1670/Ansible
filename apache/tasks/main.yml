@@ -1,0 +1,17 @@
+- yum:
+    name: 
+      - httpd
+    state: present
+- service:
+    name: httpd
+    state: started
+    enabled: yes
+- firewalld:
+    service: http
+    immediate: yes
+    permanent: yes
+    state: enabled
+- template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+
